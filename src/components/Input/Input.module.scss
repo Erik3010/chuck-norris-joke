@@ -1,6 +1,13 @@
 @import "styles/variables";
 
 .input {
+  &-container {
+    position: relative;
+  }
+  &.has-autocomplete {
+    padding-right: 2rem;
+  }
+  width: 100%;
   padding: 0.75rem 1rem;
   border-radius: 6px;
   background: $white;
@@ -8,5 +15,33 @@
   border: none;
   &::placeholder {
     color: $placeholder;
+  }
+  &-icon {
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+.autocomplete {
+  position: absolute;
+  bottom: 42px;
+  background: $white;
+  box-shadow: $shadow;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 6px;
+  .autocomplete-item {
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  > * + * {
+    margin-top: 0.5rem;
   }
 }

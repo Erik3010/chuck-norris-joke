@@ -23,7 +23,28 @@ const Home = () => {
         </div>
       </div>
       <div className={styles["home-footer"]}>
-        <Input placeholder="Search jokes by category" />
+        <Input
+          placeholder="Search jokes by category"
+          autocomplete={true}
+          items={[
+            "animal",
+            "career",
+            "celebrity",
+            "dev",
+            "explicit",
+            "fashion",
+            "food",
+            "history",
+            "money",
+            "movie",
+            "music",
+            "political",
+            "religion",
+            "science",
+            "sport",
+            "travel",
+          ]}
+        />
         <Button>Search!</Button>
       </div>
     </div>

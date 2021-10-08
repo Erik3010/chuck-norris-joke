@@ -4,9 +4,11 @@
   &-search-container,
   &-footer {
     display: flex;
-    input {
+    > *:first-child {
       flex: 1;
-      margin-right: 1rem;
+    }
+    button {
+      margin-left: 1rem;
     }
   }
   &-content {
