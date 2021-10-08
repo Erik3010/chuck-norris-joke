@@ -1,0 +1,12 @@
+@import "styles/variables";
+
+.input {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  background: $white;
+  box-shadow: $input-shadow;
+  border: none;
+  &::placeholder {
+    color: $placeholder;
+  }
+}

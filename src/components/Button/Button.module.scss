@@ -1,0 +1,13 @@
+@import "styles/variables";
+
+.button {
+  background: $primary;
+  color: $white;
+  box-shadow: $button-shadow;
+  padding: 0.625rem 1rem;
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}

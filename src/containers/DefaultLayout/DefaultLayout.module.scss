@@ -1,0 +1,22 @@
+@import "styles/variables";
+
+.layout {
+  margin-top: 0.5rem;
+  &-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    .layout-title {
+      color: $primary;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+  }
+  &-content {
+    > * + * {
+      margin-top: 1rem;
+    }
+  }
+}
