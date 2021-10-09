@@ -10,4 +10,8 @@
   font-size: 1rem;
   border-radius: 6px;
   cursor: pointer;
+  min-width: 102px;
+  &:disabled {
+    background: $gray;
+  }
 }

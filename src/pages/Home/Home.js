@@ -6,7 +6,30 @@ import Joke from "components/Joke/Joke";
 
 import ChuckNorris from "assets/images/chuck-norris.png";
 
+import { useState, useEffect } from "react";
+
+import { getRandomJokes } from "services/jokes";
+
 const Home = () => {
+  const [joke, setJoke] = useState({});
+  const [isLoadingJoke, setIsLoadingJoke] = useState(false);
+
+  useEffect(() => {
+    fetchRandomJoke();
+  }, []);
+
+  const fetchRandomJoke = async () => {
+    try {
+      setIsLoadingJoke(true);
+      const result = await getRandomJokes();
+      setJoke(result.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoadingJoke(false);
+    }
+  };
+
   return (
     <div className={styles["home"]}>
       <div className={styles["home-body"]}>
@@ -15,11 +38,17 @@ const Home = () => {
           <Button>Search!</Button>
         </div>
         <div className={styles["home-content"]}>
-          <img src={ChuckNorris} alt="chuck-norris" />
+          <img src={joke.icon_url} alt="chuck-norris" />
           <div className={styles["joke-wrapper"]}>
-            <Joke joke="Lorem ipsum dolor sit amet consectetur adipisicing elit." />
+            <Joke joke={joke.value} />
           </div>
-          <Button>Another!</Button>
+          <Button
+            loading={isLoadingJoke}
+            disabled={isLoadingJoke}
+            onClick={fetchRandomJoke}
+          >
+            Another!
+          </Button>
         </div>
       </div>
       <div className={styles["home-footer"]}>

@@ -1,9 +1,11 @@
 import styles from "components/Button/Button.module.scss";
 
-const Button = ({ children, ...rest }) => {
+import Spinner from "components/Spinner/Spinner";
+
+const Button = ({ children, loading, ...rest }) => {
   return (
     <button className={styles["button"]} {...rest}>
-      {children}
+      {loading ? <Spinner /> : children}
     </button>
   );
 };
