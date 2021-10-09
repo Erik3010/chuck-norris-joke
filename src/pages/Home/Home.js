@@ -38,7 +38,13 @@ const Home = () => {
           <Button>Search!</Button>
         </div>
         <div className={styles["home-content"]}>
-          <img src={joke.icon_url} alt="chuck-norris" />
+          <div className={styles["home-icon"]}>
+            <img
+              src={joke.icon_url ?? ChuckNorris}
+              alt="chuck-norris"
+              className={styles["home-icon"]}
+            />
+          </div>
           <div className={styles["joke-wrapper"]}>
             <Joke joke={joke.value} />
           </div>
