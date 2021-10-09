@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 
 import { ReactComponent as CheveronDown } from "assets/icons/CheveronDown.svg";
 
-const Input = ({ placeholder, autocomplete = false, items }) => {
+const Input = ({ autocomplete = false, items, ...rest }) => {
   const inputRef = useRef(null);
 
   const [showAutocomplete, setShowAutocomplete] = useState(false);
@@ -50,8 +50,8 @@ const Input = ({ placeholder, autocomplete = false, items }) => {
         ].join(" ")}
         type="text"
         value={value}
-        placeholder={placeholder}
         onChange={(e) => onChangeHandler(e)}
+        {...rest}
       />
       {autocomplete && (
         <div className={styles["input-icon"]}>

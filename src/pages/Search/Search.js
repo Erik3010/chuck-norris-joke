@@ -1,5 +1,3 @@
-import styles from "pages/Search/Search.module.scss";
-
 import Joke from "components/Joke/Joke";
 
 import DefaultLayout from "containers/DefaultLayout/DefaultLayout";

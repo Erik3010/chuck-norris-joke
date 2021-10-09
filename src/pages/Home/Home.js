@@ -8,14 +8,24 @@ import ChuckNorris from "assets/images/chuck-norris.png";
 
 import { useState, useEffect } from "react";
 
-import { getRandomJokes } from "services/jokes";
+import { getJokesCategories, getRandomJokes } from "services/jokes";
+
+import { useHistory } from "react-router-dom";
 
 const Home = () => {
+  const history = useHistory();
+
   const [joke, setJoke] = useState({});
   const [isLoadingJoke, setIsLoadingJoke] = useState(false);
 
+  const [isLoadingCategory, setIsLoadingCategory] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState("");
+
+  const [search, setSearch] = useState("");
+
   useEffect(() => {
-    fetchRandomJoke();
+    Promise.all([fetchRandomJoke(), fetchCategories()]);
   }, []);
 
   const fetchRandomJoke = async () => {
@@ -30,12 +40,32 @@ const Home = () => {
     }
   };
 
+  const fetchCategories = async () => {
+    try {
+      setIsLoadingCategory(true);
+      const result = await getJokesCategories();
+      setCategories(result.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoadingCategory(false);
+    }
+  };
+
+  const searchHandler = () => {
+    history.push({ pathname: "/search", search: `?query=${search}` });
+  };
+
   return (
     <div className={styles["home"]}>
       <div className={styles["home-body"]}>
         <div className={styles["home-search-container"]}>
-          <Input placeholder="Search jokes by text" />
-          <Button>Search!</Button>
+          <Input
+            placeholder="Search jokes by text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <Button onClick={searchHandler}>Search!</Button>
         </div>
         <div className={styles["home-content"]}>
           <div className={styles["home-icon"]}>
@@ -61,24 +91,7 @@ const Home = () => {
         <Input
           placeholder="Search jokes by category"
           autocomplete={true}
-          items={[
-            "animal",
-            "career",
-            "celebrity",
-            "dev",
-            "explicit",
-            "fashion",
-            "food",
-            "history",
-            "money",
-            "movie",
-            "music",
-            "political",
-            "religion",
-            "science",
-            "sport",
-            "travel",
-          ]}
+          items={categories}
         />
         <Button>Search!</Button>
       </div>
