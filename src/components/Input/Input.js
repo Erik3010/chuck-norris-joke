@@ -4,12 +4,12 @@ import { useState, useEffect, useRef } from "react";
 
 import { ReactComponent as CheveronDown } from "assets/icons/CheveronDown.svg";
 
-const Input = ({ autocomplete = false, items, ...rest }) => {
+const Input = ({ autocomplete = false, items, onAutoComplete, ...rest }) => {
   const inputRef = useRef(null);
 
   const [showAutocomplete, setShowAutocomplete] = useState(false);
   const [filteredItems, setFilteredItems] = useState([]);
-  const [value, setValue] = useState("");
+  const [, setValue] = useState("");
 
   const onChangeHandler = (e) => {
     setValue(e.target.value);
@@ -28,6 +28,10 @@ const Input = ({ autocomplete = false, items, ...rest }) => {
   const onClickHandler = (item) => {
     setValue(item);
     setShowAutocomplete(false);
+
+    onAutoComplete(item);
+
+    inputRef.current.querySelector("input").focus();
   };
 
   const closeAutocomplete = (e) => {
@@ -49,8 +53,7 @@ const Input = ({ autocomplete = false, items, ...rest }) => {
           autocomplete && styles["has-autocomplete"],
         ].join(" ")}
         type="text"
-        value={value}
-        onChange={(e) => onChangeHandler(e)}
+        onInput={(e) => onChangeHandler(e)}
         {...rest}
       />
       {autocomplete && (

@@ -58,6 +58,12 @@ const Home = () => {
     history.push({ pathname: "/search", search: `?query=${search}` });
   };
 
+  const searchByCategoryHandler = (e) => {
+    e.preventDefault();
+
+    history.push({ pathname: `/category/${category}` });
+  };
+
   return (
     <div className={styles["home"]}>
       <div className={styles["home-body"]}>
@@ -92,14 +98,20 @@ const Home = () => {
           </Button>
         </div>
       </div>
-      <div className={styles["home-footer"]}>
+      <form
+        onSubmit={searchByCategoryHandler}
+        className={styles["home-footer"]}
+      >
         <Input
           placeholder="Search jokes by category"
           autocomplete={true}
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          onAutoComplete={(value) => setCategory(value)}
           items={categories}
         />
         <Button>Search!</Button>
-      </div>
+      </form>
     </div>
   );
 };
