@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import { getJokesCategories, getRandomJokes } from "services/jokes";
 
 import { useHistory } from "react-router-dom";
+import Spinner from "components/Spinner/Spinner";
 
 const Home = () => {
   const history = useHistory();
@@ -87,7 +88,7 @@ const Home = () => {
             />
           </div>
           <div className={styles["joke-wrapper"]}>
-            <Joke joke={joke.value} />
+            {isLoadingJoke ? <Spinner /> : <Joke joke={joke.value} />}
           </div>
           <Button
             loading={isLoadingJoke}
