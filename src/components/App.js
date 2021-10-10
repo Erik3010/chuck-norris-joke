@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, HashRouter } from "react-router-dom";
 
 import Home from "pages/Home/Home";
 import Search from "pages/Search/Search";
@@ -8,7 +8,7 @@ import Header from "components/Header/Header";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="container">
         <Header />
         <div className="main-content">
@@ -19,7 +19,7 @@ const App = () => {
           </Switch>
         </div>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
