@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/chuck-norris-joke/static/css/main.425246b5.chunk.css",
+    "main.js": "/chuck-norris-joke/static/js/main.44eaa7ee.chunk.js",
+    "main.js.map": "/chuck-norris-joke/static/js/main.44eaa7ee.chunk.js.map",
+    "runtime-main.js": "/chuck-norris-joke/static/js/runtime-main.c5367aa7.js",
+    "runtime-main.js.map": "/chuck-norris-joke/static/js/runtime-main.c5367aa7.js.map",
+    "static/js/2.2aa35c15.chunk.js": "/chuck-norris-joke/static/js/2.2aa35c15.chunk.js",
+    "static/js/2.2aa35c15.chunk.js.map": "/chuck-norris-joke/static/js/2.2aa35c15.chunk.js.map",
+    "index.html": "/chuck-norris-joke/index.html",
+    "static/css/main.425246b5.chunk.css.map": "/chuck-norris-joke/static/css/main.425246b5.chunk.css.map",
+    "static/js/2.2aa35c15.chunk.js.LICENSE.txt": "/chuck-norris-joke/static/js/2.2aa35c15.chunk.js.LICENSE.txt",
+    "static/media/ArrowBack.fac68be7.svg": "/chuck-norris-joke/static/media/ArrowBack.fac68be7.svg",
+    "static/media/CheveronDown.d9934ba8.svg": "/chuck-norris-joke/static/media/CheveronDown.d9934ba8.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c5367aa7.js",
+    "static/js/2.2aa35c15.chunk.js",
+    "static/css/main.425246b5.chunk.css",
+    "static/js/main.44eaa7ee.chunk.js"
+  ]
+}
