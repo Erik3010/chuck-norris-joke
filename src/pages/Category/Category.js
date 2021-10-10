@@ -11,12 +11,14 @@ import { useHistory } from "react-router-dom";
 const Category = ({ match }) => {
   const history = useHistory();
 
-  const [isLoadingCategory, setIsLoadingJoke] = useState(false);
+  const [isLoadingJoke, setIsLoadingJoke] = useState(false);
   const [joke, setJoke] = useState({});
+  const [isNotFound, setIsNotFound] = useState(false);
 
   useEffect(() => {
-    fetchJokes();
-  }, []);
+    if (isNotFound) history.push("/");
+    else fetchJokes();
+  }, [isNotFound]);
 
   const fetchJokes = async () => {
     try {
@@ -26,7 +28,7 @@ const Category = ({ match }) => {
     } catch (error) {
       if (error.response.status === 404) {
         alert(`Joke dengan category ${match.params.category} tidak ditemukan`);
-        history.push("/");
+        setIsNotFound(true);
       }
     } finally {
       setIsLoadingJoke(false);
@@ -34,8 +36,8 @@ const Category = ({ match }) => {
   };
 
   return (
-    <DefaultLayout titleLabel="Category" title="Animal">
-      {isLoadingCategory ? <Spinner /> : <Joke joke={joke.value} />}
+    <DefaultLayout titleLabel="Category" title={match.params.category}>
+      {isLoadingJoke ? <Spinner /> : <Joke joke={joke.value} />}
     </DefaultLayout>
   );
 };

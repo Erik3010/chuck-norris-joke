@@ -18,7 +18,7 @@ const Home = () => {
   const [joke, setJoke] = useState({});
   const [isLoadingJoke, setIsLoadingJoke] = useState(false);
 
-  const [isLoadingCategory, setIsLoadingCategory] = useState(false);
+  const [, setIsLoadingCategory] = useState(false);
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState("");
 
