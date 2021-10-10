@@ -52,21 +52,26 @@ const Home = () => {
     }
   };
 
-  const searchHandler = () => {
+  const searchHandler = (e) => {
+    e.preventDefault();
+
     history.push({ pathname: "/search", search: `?query=${search}` });
   };
 
   return (
     <div className={styles["home"]}>
       <div className={styles["home-body"]}>
-        <div className={styles["home-search-container"]}>
+        <form
+          className={styles["home-search-container"]}
+          onSubmit={(e) => searchHandler(e)}
+        >
           <Input
             placeholder="Search jokes by text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <Button onClick={searchHandler}>Search!</Button>
-        </div>
+          <Button type="submit">Search!</Button>
+        </form>
         <div className={styles["home-content"]}>
           <div className={styles["home-icon"]}>
             <img
